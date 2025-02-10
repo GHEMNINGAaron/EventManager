@@ -15,7 +15,7 @@
   </nav>
   @if (newEvent) {
     <div class="flex flex-col w-full justify-center items-center h-full gap-12">
-      <p class="font-semibold text-[30px]">New Event</p>
+      <p class="font-semibold text-[30px]">Edit my Event</p>
       <div class="flex flex-col gap-5">
         <form [formGroup]="form" class="flex flex-col gap-2">
           <div
@@ -27,6 +27,7 @@
               placeholder="title"
               type="text"
               formControlName="title"
+              ngModel="{{ event.title }}"
             />
           </div>
           <div
@@ -38,6 +39,7 @@
               placeholder="date"
               type="date"
               formControlName="date"
+              ngModel="{{ event.date }}"
             />
           </div>
           <div
@@ -49,6 +51,7 @@
               placeholder="location"
               type="text"
               formControlName="location"
+              ngModel="{{ event.location }}"
             />
           </div>
           <div
@@ -60,14 +63,15 @@
               placeholder="description"
               type=""
               formControlName="description"
+              ngModel="{{ event.description }}"
             ></textarea>
           </div>
           <button
             class="bg-[#483d8b] border p-3 text-white hover:bg-white hover:text-[#483d8b] transition duration-500"
             type="submit"
-            (click)="onSubmit()"
+            (click)="editEvent()"
           >
-            Edit my event
+            Create an event
           </button>
         </form>
       </div>
