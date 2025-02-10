@@ -2,6 +2,7 @@ import { EventService } from './../../events/data-access/event.service';
 import { Component, Input } from '@angular/core';
 import { Event } from '../interfaces/event.interface';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-card',
@@ -19,7 +20,7 @@ export class EventCardComponent {
 
   @Input() registeredEvents!: boolean;
 
-  constructor(private datePipe: DatePipe, private eventService: EventService) {}
+  constructor(private datePipe: DatePipe, private eventService: EventService, private router: Router) {}
 
   registerEvent(id: number): any {
     return this.eventService.registerEvent(id);
@@ -49,5 +50,10 @@ export class EventCardComponent {
         console.error('Connection error', error);
       }
     );
+  }
+
+  editEvent(event: Event): any {
+    localStorage.setItem('editedEvent', JSON.stringify(event));
+    this.router.navigate(['/events/edit-event']);
   }
 }

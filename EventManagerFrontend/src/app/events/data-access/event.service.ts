@@ -103,4 +103,26 @@ export class EventService {
       console.error('Connection error', error);  
     });  
   }
+
+  editEvent(id: number, event : {
+    title: string,
+    date: Date,
+    location: string,
+    description: string
+  }){
+    console.log('Editing event:', event);
+    var token = this.authService.getToken();
+    var api = this.apiUrl+"/events/edit/"+id
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/json',
+    });
+    console.log(headers)
+    return this.httpClient.put(api, event, {headers: headers}).subscribe(response => {   
+      console.log('Event edited', response);  
+      this.router.navigate(['/events'])  
+    }, error => {  
+      console.error('Connection error', error);  
+    });  
+  }
 }

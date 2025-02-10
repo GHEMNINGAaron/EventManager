@@ -6,6 +6,7 @@ import { EventsComponent } from './events/events-page/events.component';
 import { MyEventsComponent } from './events/my-events-page/my-events.component';
 import { RegisteredEventsComponent } from './events/registered-events-page/registered-events.component';
 import { NewEventComponent } from './events/new-event/new-event.component';
+import { EditEventComponent } from './events/edit-event/edit-event.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +46,10 @@ export const routes: Routes = [
       {
         path: 'new-event',
         component: NewEventComponent
+      },
+      {
+        path: 'edit-event',
+        component: EditEventComponent
       }
     ]
   }
