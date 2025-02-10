@@ -1,0 +1,81 @@
+<div class="min-h-screen h-screen w-full">
+  <nav
+    class="w-full flex justify-between items-center sticky px-5 border-b-[1px] py-3"
+  >
+    <div class="flex justify-center items-center gap-2">
+      <ng-icon name="hugeColors"></ng-icon> Event Manager
+    </div>
+    <button
+      class="border rounded-[10px] p-2"
+      [routerLink]="['/']"
+      routerLinkActive="router-link-active"
+    >
+      Home
+    </button>
+  </nav>
+  @if (newEvent) {
+    <div class="flex flex-col w-full justify-center items-center h-full gap-12">
+      <p class="font-semibold text-[30px]">New Event</p>
+      <div class="flex flex-col gap-5">
+        <form [formGroup]="form" class="flex flex-col gap-2">
+          <div
+            class="flex gap-2 active:border border border-gray-100 items-center outline-1 p-3"
+          >
+            <ng-icon name="hugeUser"></ng-icon>
+            <input
+              class="px-2 h-5 w-[400px] outline-none"
+              placeholder="title"
+              type="text"
+              formControlName="title"
+            />
+          </div>
+          <div
+            class="flex gap-2 active:border border border-gray-100 items-center outline-1 p-3"
+          >
+            <ng-icon name="hugeMail01"></ng-icon>
+            <input
+              class="px-2 h-5 w-[400px] outline-none"
+              placeholder="date"
+              type="date"
+              formControlName="date"
+            />
+          </div>
+          <div
+            class="flex gap-2 border border-gray-100 active:border items-center outline-1 p-3"
+          >
+            <ng-icon name="hugeLockPassword"></ng-icon>
+            <input
+              class="px-2 h-5 w-[400px] outline-none"
+              placeholder="location"
+              type="text"
+              formControlName="location"
+            />
+          </div>
+          <div
+            class="flex gap-2 border border-gray-100 active:border items-center outline-1 p-3"
+          >
+            <ng-icon name="hugePasswordValidation"></ng-icon>
+            <textarea
+              class="px-2 h-5 w-[400px] outline-none"
+              placeholder="description"
+              type=""
+              formControlName="description"
+            ></textarea>
+          </div>
+          <button
+            class="bg-[#483d8b] border p-3 text-white hover:bg-white hover:text-[#483d8b] transition duration-500"
+            type="submit"
+            (click)="onSubmit()"
+          >
+            Create an event
+          </button>
+        </form>
+      </div>
+    </div>
+  } @else {
+    <div class="flex flex-col w-full justify-center items-center h-full gap-12">
+      <p class="font-semibold text-[30px]">Oops.... Connect you first</p>
+    </div>
+  }
+  
+</div>

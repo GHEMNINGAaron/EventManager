@@ -1,0 +1,81 @@
+<div class="border-[1px] rounded-[10px] text-[14px]">
+  <div>
+    <img
+      class="rounded-t-[10px] w-full h-[180px]"
+      src="assets/welcome.jpeg"
+      alt=""
+      srcset=""
+    />
+  </div>
+  <div class="flex flex-col p-3 gap-3">
+    <div class="flex justify-between">
+      <div class="flex flex-col">
+        <div>Event</div>
+        <div class="font-semibold">
+          @if (registeredEvents) {
+            {{event.event.title}}
+          }@else {
+            {{event.title}}
+          }
+        </div>
+      </div>
+      <div class="">
+        <div class="text-[#483d8b]">
+          <span class="font-semibold text-black">
+            @if (registeredEvents) {
+              {{formatDate(event.event.date)}}
+            }@else {
+              {{formatDate(event.date)}}
+            }
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="text-[#483d8b]">
+      @if (registeredEvents) {
+        {{event.event.description}}
+      }@else {
+        {{event.description}}
+      }
+    </div>
+  </div>
+
+  <div class="h-full bg-[#f8f8ff] p-3 flex gap-2 items-center">
+    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+    
+      @if (registeredEvents) {
+        <button
+          class="border rounded-[10px] p-2"
+          routerLinkActive=""
+          (click)="unregisterEvent(event.event.id)"
+        >
+          Unregister
+        </button>
+      } @else {
+        @if (!myEvents) {
+          <button
+            class="border rounded-[10px] p-2"
+            routerLinkActive=""
+            (click)="registerEvent(event.id)"
+          >
+            Register
+          </button>
+        } @else {
+        <!-- <button
+          class="border rounded-[10px] p-2"
+          routerLinkActive=""
+          (click)="editEvent(event)"
+        >
+          Edit  
+        </button> -->
+        <button
+          class="border rounded-[10px] p-2"
+          routerLinkActive=""
+          (click)="deleteEvent(event.id)"
+        >
+          Delete
+        </button>
+      }
+    }
+  </div>
+</div>

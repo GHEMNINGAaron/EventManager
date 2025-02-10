@@ -1,0 +1,26 @@
+<nav
+    class="w-full flex justify-between items-center sticky px-5 border-b-[1px] py-3"
+    [ngClass]="{'bg-[#483d8b] text-black font-semibold': color != undefined, 'bg-transparent text-white font-semibold border-b-[2px]': color === undefined }"
+>
+  <div class="flex justify-center items-center gap-2">
+    <ng-icon name="hugeColors"></ng-icon> Event Manager
+  </div>
+
+  <div class="flex items-center gap-10">
+    @for (link of links; track $index) {
+    <div 
+      class="flex justify-center items-center gap-2 cursor-pointer"
+      [routerLink]="[link.path]"
+      routerLinkActive="bg-[#483d8b] text-white">
+      <ng-icon [name]="link.icon"></ng-icon> {{ link.name }}
+    </div>
+    }
+    <button
+      class="border rounded-[10px] p-2"
+      [routerLink]="['/auth/login']"
+      routerLinkActive=""
+    >
+      Sign in
+    </button>
+  </div>
+</nav>

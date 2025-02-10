@@ -1,0 +1,67 @@
+<div>
+  <app-navbar class="sticky top-0 z-20" [color]="'bg-[#483d8b]'"></app-navbar>
+  <div
+    class="text-white font-semibold text-[30px] bg-[#483d8b] w-full text-center py-2"
+  >
+    Find Your Event
+  </div>
+  <header
+    class="py-6 sticky top-16 z-10 bg-[#483d8b] flex flex-col items-center gap-3 justify-center"
+  >
+    <div class="ml-2 flex gap-2 bg-[#483d8b]">
+      <div class="h-12 bg-white rounded-l-[10px]">
+        <input
+          type="date"
+          placeholder="Launch date"
+          class="h-full bg-inherit outline-none p-3 rounded-l-[10px]"
+        />
+      </div>
+      <div class="h-12 bg-white rounded-r-[10px]">
+        <input
+          type="number"
+          placeholder="Your budget"
+          class="h-full outline-none bg-inherit p-3 rounded-r-[10px]"
+        />
+      </div>
+    </div>
+  </header>
+  <div class="flex justify-center gap-5 mt-5">
+    <!-- left filter  -->
+    <div
+      class="border border-gray-200 w-[250px] h-full p-2 flex flex-col gap-4 rounded-[10px]"
+    >
+      <p class="font-bold">All filters</p>
+      <div class="py-2 cursor-pointer" (click)="showFilter('type')">
+        <p class="w-full flex justify-between items-center font-medium">
+          Type of event <ng-icon name="hugeArrowDown01"></ng-icon>
+        </p>
+      </div>
+      <div
+        [ngClass]="{
+          'inline-block': filter == 'type',
+          hidden: filter != 'type'
+        }"
+      >
+        <div class="flex gap-2">
+          <input id="solo" type="checkbox" />
+          <label for="solo">Showcase</label>
+        </div>
+        <div class="flex gap-2">
+          <input id="solo" type="checkbox" />
+          <label for="solo">Meeting</label>
+        </div>
+      </div>
+      <hr />
+      <div class="py-2 cursor-pointer">
+        <p class="w-full flex justify-between items-center font-medium">
+          Duration of the event <ng-icon name="hugeArrowDown01"></ng-icon>
+        </p>
+      </div>
+    </div>
+    <div class="w-full max-w-[1000px] grid grid-cols-3 gap-2">
+      @for (item of event; track $index) {
+      <app-event-card class="cursor-pointer" [event]="item" [myEvents]= false [registeredEvents] = false></app-event-card>
+      }
+    </div>
+  </div>
+</div>

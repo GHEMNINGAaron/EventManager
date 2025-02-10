@@ -1,0 +1,60 @@
+<div class="absolute z-0 top-0 w-full h-100 brightness-50 flex justify-center">
+  <img
+    class="object-cover w-full h-[460px]"
+    src="assets/event-planing.jpg"
+    alt=""
+    srcset=""
+  />
+</div>
+
+<div class="flex flex-col items-center mb-5 mt-2">
+  <app-navbar class="w-full max-w-[1250px]"></app-navbar>
+  <header
+    class="max-w-[1250px] z-10 w-full h-96 flex items-center text-[30px] font-semibold text-white"
+  >
+  Take part in the adventure:<br />
+    create or discover events that you are passionate about! 
+  </header>
+  <div class="w-full flex items-center justify-center h-16 py-2 bg-[#f8f8ff]">
+    <div class="w-full flex max-w-[1250px] justify-between">
+      @for (value of values; track $index) {
+      <div class="flex items-center justify-center">
+        <div
+          class="rounded-full shadow-sm w-10 h-10 flex items-center justify-center"
+        >
+          <ng-icon [name]="value.icon"></ng-icon>
+        </div>
+        <div>
+          <p class="text-green-700">{{ value.description }}</p>
+          <p>{{ value.nextDescription }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="flex flex-col mt-10 gap-5">
+    <p class="text-center text-[25px] font-semibold">
+      Some Events
+    </p>
+    <div class="grid grid-cols-4 gap-x-5 gap-y-3">
+      @for (image of images; track $index) {
+      <div class="relative rounded-[10px] cursor-pointer" routerLink="/house">
+        <img
+          class="w-40 h-28 brightness-50 rounded-[10px]"
+          [src]="image.path"
+          alt=""
+        />
+        <p class="absolute top-[50%] w-full text-center text-white">
+          {{ image.name }}
+        </p>
+      </div>
+      }
+    </div>
+  </div>
+  <button
+    class="border p-2 rounded-[10px] mt-5 bg-[#3cb371] text-white"
+    routerLink="/house"
+  >
+    See more
+  </button>
+</div>
